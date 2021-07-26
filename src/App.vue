@@ -1,10 +1,16 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <p>{{ store.counter }}</p>
+  <p>{{ store.doubleCount }}</p>
+  <p>{{ store.doublePlusOne }}</p>
 </template>
 
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue"
+import { useStore } from "./store/index"
+
+const store = useStore()
+store.counter = 3
 </script>
 
 <style>
