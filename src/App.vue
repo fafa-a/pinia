@@ -1,25 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <p>{{ store.counter }}</p>
-  <p>{{ store.doubleCount }}</p>
-  <p>{{ store.doublePlusOne }}</p>
+  <div container="~">
+    <Card>
+      <h4 text="xl" font="bold">Add new item</h4>
+      <!-- Create new item -->
+      <FormAddItem />
+    </Card>
+    <Card>
+      <h4>Your items ({{ cart.itemsCount }})</h4>
+      <ItemsList />
+    </Card>
+  </div>
 </template>
 
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue"
-import { useStore } from "./store/index"
-
-const store = useStore()
-store.counter = 3
+import Card from "./components/Card.vue"
+import FormAddItem from "./components/FormAdditem.vue"
+import ItemsList from "./components/ItemsList.vue"
+import { useCartStore } from "./store/index"
+const cart = useCartStore()
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

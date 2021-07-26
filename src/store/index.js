@@ -1,17 +1,24 @@
 import { defineStore } from "pinia"
 
-const useStore = defineStore({
-  id: "main",
-  // can also be defined with an arrow function if you prefer that syntax
-  state: () => ({ counter: 0 }),
-  actions: {
-    increment() {
-      this.counter++
+const useCartStore = defineStore({
+  id: "cart",
+  state: () => ({
+    items: [],
+  }),
+  getters: {
+    itemsCount() {
+      return this.items.length
     },
-    randomizeCounter() {
-      this.counter = Math.round(100 * Match.random())
+  },
+  actions: {
+    addItem(item) {
+      this.items.push(item)
+    },
+    removeItem(item) {
+      const i = this.items.findIndex((s) => s.name === item.name)
+      if (i > -1) this.items.splice(i, 1)
     },
   },
 })
 
-export { useStore }
+export { useCartStore }
